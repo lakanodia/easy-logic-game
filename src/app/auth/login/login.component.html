@@ -15,10 +15,13 @@
   <div>
     <mat-form-field appearance="fill" class="pass-form-material">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
 
       <button
-        formControlName="password"
         mat-icon-button
         matSuffix
         (click)="hide = !hide"

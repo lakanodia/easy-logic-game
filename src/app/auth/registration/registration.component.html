@@ -1,1 +1,64 @@
-<p>registration works!</p>
+<form [formGroup]="registrationForm" class="sign-form">
+  <div>
+    <mat-form-field appearance="fill" class="email-form-material">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid"></mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="pass-form-material">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" />
+
+      <button
+        formControlName="password"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="email-form-material">
+      <mat-label>Enter your name</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="name"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="email-form-material">
+      <mat-label>Enter your name</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="lastname"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-checkbox formControlName="admin" class="example-margin"
+      >Admin</mat-checkbox
+    >
+  </div>
+
+  <button mat-raised-button color="primary">Register</button>
+</form>

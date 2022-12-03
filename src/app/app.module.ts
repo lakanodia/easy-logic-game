@@ -7,16 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

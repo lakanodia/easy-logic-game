@@ -11,9 +11,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [RegistrationComponent, LoginComponent, AuthComponent],
+  declarations: [
+    RegistrationComponent,
+    LoginComponent,
+    AuthComponent,
+    NotfoundComponent,
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -24,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatCardModule,
   ],
   exports: [RegistrationComponent, LoginComponent, AuthComponent],
 })

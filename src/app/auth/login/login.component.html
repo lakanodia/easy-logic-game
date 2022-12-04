@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" class="sign-form">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="sign-form">
   <div>
     <mat-form-field appearance="fill" class="email-form-material">
       <mat-label>Enter your email</mat-label>

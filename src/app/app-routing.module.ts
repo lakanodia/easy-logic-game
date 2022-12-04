@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
+import { NotfoundComponent } from './auth/notfound/notfound.component';
 import { DashboardComponent } from './header/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import('./modules/admin/admin.module').then((m) => m.AdminModule),
   // },
-  // { path: '**', component: AdminPanelComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({

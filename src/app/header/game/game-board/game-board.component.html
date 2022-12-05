@@ -1,1 +1,50 @@
-<p>game-board works!</p>
+<div class="startButton" *ngIf="isStartButtonVisible">
+  <button (click)="startGame()" mat-raised-button color="accent">
+    Click to start game
+  </button>
+</div>
+
+<div *ngIf="isGameLogicVisible">
+  <div class="game-board-div" *ngIf="!isStartButtonVisible">
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>{{ ticker }}🕒</mat-grid-tile>
+      <mat-grid-tile>{{ ticker }}🕒</mat-grid-tile>
+      <mat-grid-tile
+        ><img
+          mat-card-image
+          class="game-img"
+          src="{{ gameQuestion.firstPicture }}"
+          *ngIf="gameQuestion"
+      /></mat-grid-tile>
+      <mat-grid-tile
+        ><img
+          mat-card-image
+          class="game-img"
+          src="{{ gameQuestion.secondPicture }}"
+          *ngIf="gameQuestion"
+      /></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card style="margin-right: 10px; margin-bottom: 15px">
+          <div
+            matBadge="hint"
+            matBadgeColor="accent"
+            matBadgeOverlap="false"
+            class="demo-section"
+          >
+            {{ hint }}
+          </div>
+        </mat-card>
+        <mat-form-field appearance="outline">
+          <mat-label>Answer</mat-label>
+          <input [(ngModel)]="userAnswer" matInput placeholder="write answer" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile
+        ><button (click)="nextQuestion()" mat-raised-button color="primary">
+          Next Question
+        </button></mat-grid-tile
+      >
+    </mat-grid-list>
+  </div>
+</div>

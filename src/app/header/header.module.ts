@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AdminModule } from './admin/admin-panel/admin.module';
+import { GameModule } from './game/game.module';
 
 @NgModule({
   declarations: [HeaderComponent, DashboardComponent],
@@ -19,6 +20,7 @@ import { AdminModule } from './admin/admin-panel/admin.module';
     MatIconModule,
     MatButtonModule,
     AdminModule,
+    GameModule
   ],
   exports: [HeaderComponent],
 })

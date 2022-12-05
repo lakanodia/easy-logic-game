@@ -13,6 +13,8 @@ import { QuestionService } from '../../admin/question.service';
 export class GameBoardComponent implements OnInit {
   isStartButtonVisible: boolean = true;
   isGameLogicVisible: boolean = true;
+  correctAnswerScore: number = -1;
+
   ticker!: number;
   gameQuestion: IQuestion | undefined;
   allQuestions: IQuestion[] = [];
@@ -34,7 +36,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   startTimer() {
-    this.ticker = 60;
+    this.ticker = 2;
     const numbers = interval(1000);
     const countdown = numbers.pipe(take(this.ticker));
     countdown.subscribe((x) => {
@@ -44,6 +46,7 @@ export class GameBoardComponent implements OnInit {
       }
     });
   }
+
   nextQuestion() {
     if (this.gameQuestion && this.gameQuestion.answer != this.userAnswer) {
       alert('Wrong Answer');
@@ -51,6 +54,9 @@ export class GameBoardComponent implements OnInit {
       this.gameQuestion = this.allQuestions[this.questionIndex];
       this.hint = this.generateHint(this.gameQuestion.answer);
       this.questionIndex++;
+      this.correctAnswerScore++;
+      console.log(this.correctAnswerScore);
+      
     }
   }
 
@@ -58,7 +64,6 @@ export class GameBoardComponent implements OnInit {
     let answerLengh = answer.length;
     let r = this.getRandomInt(answerLengh);
     let masked = '*'.repeat(answerLengh);
-
     return this.replaceChar(masked, answer[r], r);
   }
 
@@ -76,7 +81,6 @@ export class GameBoardComponent implements OnInit {
 
   outOfTime() {
     console.log('Time Over');
-    // alert('Out of Time');
     this.isGameLogicVisible = false;
   }
 }

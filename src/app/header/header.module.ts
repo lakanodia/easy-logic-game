@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AdminDialogComponent } from './admin/admin-dialog/admin-dialog.component';
+import { AdminModule } from './admin/admin-panel/admin.module';
 
 @NgModule({
   declarations: [HeaderComponent, DashboardComponent, AdminDialogComponent],
@@ -18,6 +19,7 @@ import { AdminDialogComponent } from './admin/admin-dialog/admin-dialog.componen
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    AdminModule,
   ],
   exports: [HeaderComponent],
 })

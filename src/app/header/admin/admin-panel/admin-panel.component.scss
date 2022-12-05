@@ -1,0 +1,26 @@
+.full-width-table {
+    width: 100%;
+}
+img {
+    max-width: 180px;
+    width: 100%;
+    height: 120px;
+}
+
+.add-icon{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.questions{
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color:#85538b;
+    box-shadow: 2px 0px 7px 0px #c541fd;
+    margin-bottom: 30px;
+
+}

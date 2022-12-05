@@ -36,7 +36,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   startTimer() {
-    this.ticker = 2;
+    this.ticker = 60;
     const numbers = interval(1000);
     const countdown = numbers.pipe(take(this.ticker));
     countdown.subscribe((x) => {

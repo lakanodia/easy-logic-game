@@ -1,8 +1,10 @@
-
-export interface Question {
-    answer: string;
-    firstPicture: string;
-    secondPicture: string;
-    id: number;
+export interface IQuestion {
+  answer: string;
+  firstPicture: string;
+  secondPicture: string;
+  id: number;
 }
-// export type INewQuestion = Pick<Question, 'answer' | 'firstPicture' | 'secondPicture'>
+export type INewQuestion = Pick<
+  IQuestion,
+  'answer' | 'firstPicture' | 'secondPicture'
+>;

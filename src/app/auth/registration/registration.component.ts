@@ -29,4 +29,34 @@ export class RegistrationComponent implements OnInit {
   get name() {
     return this.registrationForm.get('name') as FormControl;
   }
+  get lastname() {
+    return this.registrationForm.get('lastname') as FormControl;
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getErrorMessagePass() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.password.hasError('password') ? 'Not a valid password' : '';
+  }
+
+  getErrorMessageName() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.password.hasError('password') ? 'Not a valid name' : '';
+  }
+  getErrorMessageLastName() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.password.hasError('password') ? 'Not a valid lastname' : '';
+  }
 }

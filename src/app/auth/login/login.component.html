@@ -20,6 +20,7 @@
         matInput
         [type]="hide ? 'password' : 'text'"
       />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessagePass() }}</mat-error>
 
       <button
         mat-icon-button

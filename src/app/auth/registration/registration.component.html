@@ -8,7 +8,7 @@
         formControlName="email"
         required
       />
-      <mat-error *ngIf="email.invalid"></mat-error>
+      <mat-error *ngIf="email.invalid"> {{ getErrorMessage() }} </mat-error>
     </mat-form-field>
   </div>
 
@@ -20,7 +20,9 @@
         matInput
         [type]="hide ? 'password' : 'text'"
       />
-
+      <mat-error *ngIf="password.invalid">
+        {{ getErrorMessagePass() }}</mat-error
+      >
       <button
         mat-icon-button
         matSuffix
@@ -42,6 +44,7 @@
         formControlName="name"
         required
       />
+      <mat-error *ngIf="name.invalid"> {{ getErrorMessageName() }}</mat-error>
     </mat-form-field>
   </div>
 
@@ -54,6 +57,9 @@
         formControlName="lastname"
         required
       />
+      <mat-error *ngIf="lastname.invalid">
+        {{ getErrorMessageLastName() }}</mat-error
+      >
     </mat-form-field>
   </div>
 

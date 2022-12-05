@@ -29,6 +29,13 @@ export class LoginComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  getErrorMessagePass() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.password.hasError('password') ? 'Not a valid password' : '';
+  }
+
   ngOnInit(): void {}
 
   onSubmit(): void {

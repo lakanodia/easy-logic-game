@@ -8,11 +8,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AdminDialogComponent } from './admin/admin-dialog/admin-dialog.component';
 import { AdminModule } from './admin/admin-panel/admin.module';
 
 @NgModule({
-  declarations: [HeaderComponent, DashboardComponent, AdminDialogComponent],
+  declarations: [HeaderComponent, DashboardComponent],
   imports: [
     CommonModule,
     MatTabsModule,

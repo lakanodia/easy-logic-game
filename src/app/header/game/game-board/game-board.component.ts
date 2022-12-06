@@ -14,7 +14,8 @@ export class GameBoardComponent implements OnInit {
   isStartButtonVisible: boolean = true;
   isGameLogicVisible: boolean = true;
   correctAnswerScore: number = -1;
-
+  isSkipButtonVisible: boolean = true;
+  userScore: number;
   ticker!: number;
   gameQuestion: IQuestion | undefined;
   allQuestions: IQuestion[] = [];
@@ -22,7 +23,9 @@ export class GameBoardComponent implements OnInit {
   hint: string = '********';
   userAnswer: string = '';
 
-  constructor(private questionService: QuestionService) {}
+  constructor(private questionService: QuestionService) {
+    this.userScore = 0;
+  }
 
   ngOnInit(): void {}
 
@@ -47,6 +50,26 @@ export class GameBoardComponent implements OnInit {
     });
   }
 
+  checkAnswer() {
+    if (this.isCorrectAnswer()) {
+      this.nextQuestion();
+      this.userScore++;
+    }
+  }
+
+  skipQuestion() {
+    this.nextQuestion();
+    this.isSkipButtonVisible = false;
+  }
+
+  isCorrectAnswer(): boolean {
+    if (this.gameQuestion && this.gameQuestion.answer != this.userAnswer) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   nextQuestion() {
     if (this.gameQuestion && this.gameQuestion.answer != this.userAnswer) {
       alert('Wrong Answer');
@@ -55,8 +78,7 @@ export class GameBoardComponent implements OnInit {
       this.hint = this.generateHint(this.gameQuestion.answer);
       this.questionIndex++;
       this.correctAnswerScore++;
-      console.log(this.correctAnswerScore);
-      
+      this.userAnswer = '';
     }
   }
 

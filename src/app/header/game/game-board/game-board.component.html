@@ -36,15 +36,19 @@
         </mat-card>
         <mat-form-field appearance="outline">
           <mat-label>Answer</mat-label>
-          <input [(ngModel)]="userAnswer" matInput placeholder="write answer" />
+          <input (keyup)="checkAnswer()" [(ngModel)]="userAnswer" matInput placeholder="write answer" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile
-        ><button (click)="nextQuestion()" mat-raised-button color="primary">
+      <!-- <mat-grid-tile>
+        <button (click)="nextQuestion()" mat-raised-button color="primary">
           Next Question
-        </button></mat-grid-tile
-      >
+        </button>
+      </mat-grid-tile> -->
+
+      <mat-grid-tile>
+        <button (click)="skipQuestion() "*ngIf="isSkipButtonVisible" mat-raised-button color="warn">Skip</button>
+    </mat-grid-tile>
     </mat-grid-list>
   </div>
  

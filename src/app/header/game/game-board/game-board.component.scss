@@ -39,8 +39,25 @@
   justify-content: space-between;
 }
 
-.answer-card{
-    max-width: 100px;
-    width: 100%;
-    margin: 50px auto;
+.answer-card {
+  max-width: 100px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.mat-timer {
+  position: fixed;
+  top: 5%;
+  right: 10%;
+  max-width: 400px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.552);
+}
+.timer-text {
+  font-size: 20px;
+  color: rgb(255, 0, 0);
 }

@@ -36,7 +36,12 @@
         </mat-card>
         <mat-form-field appearance="outline">
           <mat-label>Answer</mat-label>
-          <input (keyup)="checkAnswer()" [(ngModel)]="userAnswer" matInput placeholder="write answer" />
+          <input
+            (keyup)="checkAnswer()"
+            [(ngModel)]="userAnswer"
+            matInput
+            placeholder="write answer"
+          />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
@@ -47,20 +52,35 @@
       </mat-grid-tile> -->
 
       <mat-grid-tile>
-        <button (click)="skipQuestion() "*ngIf="isSkipButtonVisible" mat-raised-button color="warn">Skip</button>
-    </mat-grid-tile>
+        <button
+          (click)="skipQuestion()"
+          *ngIf="isSkipButtonVisible"
+          mat-raised-button
+          color="warn"
+        >
+          Skip
+        </button>
+      </mat-grid-tile>
     </mat-grid-list>
   </div>
- 
 </div>
 
 <div class="answer-card">
-    <button center align *ngIf="!isGameLogicVisible" mat-raised-button color="accent"> Your total score is  
-        <h1>
-            {{ correctAnswerScore }}
-        </h1>
-      
-    </button>
+  <button
+    center
+    align
+    *ngIf="!isGameLogicVisible"
+    mat-raised-button
+    color="accent"
+  >
+    Your total score is
+    <h1>
+      {{ correctAnswerScore }}
+    </h1>
+  </button>
 </div>
- 
 
+
+<mat-card *ngIf="!isTimerHide" class="mat-timer">
+  <mat-card-content class="timer-text">Your Time Out 🙁 </mat-card-content>
+</mat-card>

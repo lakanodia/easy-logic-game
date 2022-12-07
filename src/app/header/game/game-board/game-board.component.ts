@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { interval, take } from 'rxjs';
+import { interval, Observable, take } from 'rxjs';
 import { IQuestion } from '../../admin/question';
-
 import { QuestionService } from '../../admin/question.service';
+import { delay, map, merge, skip, Subject, tap } from 'rxjs';
 
 @Component({
   selector: 'app-game-board',
@@ -13,6 +12,7 @@ import { QuestionService } from '../../admin/question.service';
 export class GameBoardComponent implements OnInit {
   isStartButtonVisible: boolean = true;
   isGameLogicVisible: boolean = true;
+  isTimerHide: boolean = true;
   correctAnswerScore: number = -1;
   isSkipButtonVisible: boolean = true;
   userScore: number;
@@ -39,7 +39,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   startTimer() {
-    this.ticker = 60;
+    this.ticker = 2;
     const numbers = interval(1000);
     const countdown = numbers.pipe(take(this.ticker));
     countdown.subscribe((x) => {
@@ -104,5 +104,9 @@ export class GameBoardComponent implements OnInit {
   outOfTime() {
     console.log('Time Over');
     this.isGameLogicVisible = false;
+    this.isTimerHide = false;
+    setTimeout(() => {
+      this.isTimerHide = true;
+    }, 2000);
   }
 }

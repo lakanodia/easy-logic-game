@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable, of, throwError } from 'rxjs';
+import { IUser } from '../header/leaderboard/users';
 import { UsersService } from '../header/leaderboard/users.service';
 
 @Injectable({

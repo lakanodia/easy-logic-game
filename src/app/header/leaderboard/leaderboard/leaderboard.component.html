@@ -1,1 +1,26 @@
-<p>leaderboard works!</p>
+<h1>Leaderboard</h1>
+<div class="leaderboard">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 full-width-table"
+  >
+    <ng-container matColumnDef="number">
+      <th class="th-title" mat-header-cell *matHeaderCellDef>N</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th class="th-title" mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <th class="th-title" mat-header-cell *matHeaderCellDef>score</th>
+      <td mat-cell *matCellDef="let element">{{ element.highScore }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -1,9 +1,15 @@
-.game-dashboard{
-    display: flex;
-    justify-content: space-between;
+.game-dashboard {
+  display: flex;
+  justify-content: space-between;
 }
 
-.mat-tab:active{
-    color:rgb(255, 255, 255);
-    font-weight: 900;
+.mat-tab:active {
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+}
+
+.tab-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
 }

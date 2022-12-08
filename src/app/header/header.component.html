@@ -19,13 +19,21 @@
   </mat-toolbar>
 </div>
 
-<div class="tab-login">
-  <mat-tab-group
-    mat-stretch-tabs
-    class="example-stretched-tabs mat-elevation-z4"
-  >
-    <mat-tab label="Game"> <app-game-board></app-game-board> </mat-tab>
-    <mat-tab label="Admin"> <app-admin-panel></app-admin-panel> </mat-tab>
-    <mat-tab label="Leaderboard"> <app-leaderboard></app-leaderboard> </mat-tab>
-  </mat-tab-group>
+<div class="tab-container">
+  <nav mat-tab-nav-bar class="mat-elevation">
+    <a *ngIf="isUserAdmin()" mat-tab-link routerLink="/admin">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Admin</span>
+    </a>
+    <a mat-tab-link routerLink="/game">
+      <mat-icon>videogame_asset</mat-icon>
+      <span>Game</span>
+    </a>
+    <a mat-tab-link routerLink="/leaderboard">
+      <mat-icon>leaderboard</mat-icon>
+      <span>Leaderboard</span>
+    </a>
+  </nav>
 </div>
+
+<router-outlet></router-outlet>

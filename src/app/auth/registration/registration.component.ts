@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/header/leaderboard/users';
+import { UsersService } from 'src/app/header/leaderboard/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -7,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
-  hide: any;
+  hide: boolean = true;
   registrationForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -16,7 +20,11 @@ export class RegistrationComponent implements OnInit {
     admin: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,6 +41,9 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get('lastname') as FormControl;
   }
 
+  get admin() {
+    return this.registrationForm.get('admin') as FormControl;
+  }
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -58,5 +69,20 @@ export class RegistrationComponent implements OnInit {
       return 'You must enter a value';
     }
     return this.password.hasError('password') ? 'Not a valid lastname' : '';
+  }
+
+  submitForm(): void {
+    if (this.registrationForm.valid) {
+      this.userService
+        .createUser(<IUser>this.registrationForm.value)
+        .subscribe((result) => {
+          if (this.admin.value) {
+            this.authService.setUserRoleAndId('admin', result.id.toString());
+          } else {
+            this.authService.setUserRoleAndId('user', result.id.toString());
+          }
+          this.router.navigate(['leaderboard']);
+        });
+    }
   }
 }

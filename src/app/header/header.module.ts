@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AdminModule } from './admin/admin-panel/admin.module';
 import { GameModule } from './game/game.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, DashboardComponent],
@@ -22,7 +23,8 @@ import { LeaderboardModule } from './leaderboard/leaderboard.module';
     MatButtonModule,
     AdminModule,
     GameModule,
-    LeaderboardModule
+    LeaderboardModule,
+    RouterModule,
   ],
   exports: [HeaderComponent],
 })

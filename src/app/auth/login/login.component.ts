@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  hide: any;
+  hide: boolean = true;
   constructor(private router: Router, private auth: AuthService) {}
 
   loginForm = new FormGroup({

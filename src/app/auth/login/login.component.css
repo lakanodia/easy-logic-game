@@ -1,0 +1,12 @@
+.sign-form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+}
+.sign-form .email-form-material {
+  width: 100%;
+}
+.sign-form .pass-form-material {
+  width: 100%;
+}/*# sourceMappingURL=login.component.css.map */

@@ -1,0 +1,9 @@
+.game-dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-tab:active {
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+}/*# sourceMappingURL=header.component.css.map */

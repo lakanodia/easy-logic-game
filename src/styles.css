@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(119, 94, 139);
+  background: radial-gradient(circle, rgb(119, 94, 139) 0%, rgb(32, 35, 52) 100%);
+}/*# sourceMappingURL=styles.css.map */

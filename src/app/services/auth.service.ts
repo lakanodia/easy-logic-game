@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
+import { map, Observable, of, throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +9,28 @@ import { Observable, of, throwError } from 'rxjs';
 export class AuthService {
   constructor(private router: Router) {}
 
-  setToken(token: string): void {
+  setUserRoleAndId(role: string, id: string) {
+    this.setUserRole(role);
+    this.setUserId(id);
+  }
+
+  private setUserRole(token: string): void {
     localStorage.setItem('token', token);
   }
 
-  getToken(): string | null {
+  private setUserId(id: string): void {
+    localStorage.setItem('userId', id);
+  }
+
+  getUserId(): number {
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+      throw new Error('Failed to Login');
+    }
+    return parseInt(userId);
+  }
+
+  private getToken(): string | null {
     return localStorage.getItem('token');
   }
 
@@ -25,13 +43,23 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
-  login({ email, password }: any): Observable<any> {
-    if (email === 'admin@gmail.com' && password === '123') {
-      this.setToken('admin');
-      return of({ name: 'admin', email: 'admin@gmail.com' });
-    }
-    return throwError(new Error('Failed to Login'));
-  }
+  // login({ email, password }: any): Observable<any> {
+  //   return this.userService.findUsers(email, password).pipe(
+  //     map((users: IUser[]) => {
+  //       if (users.length == 0) {
+  //         throw new Error('Failed to Login');
+  //       }
+  //       let user = users[0];
+  //       if (user.isAdmin) {
+  //         this.setUserRole('admin');
+  //       } else {
+  //         this.setUserRole('user');
+  //       }
+  //       this.setUserId(user.id.toString());
+  //       return of({ name: user.name, email: user.email });
+  //     })
+  //   );
+  // }
 
   isAdmin(): boolean {
     return this.getToken() == 'admin';

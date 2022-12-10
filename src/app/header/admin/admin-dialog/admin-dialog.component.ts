@@ -12,6 +12,7 @@ import { QuestionService } from '../question.service';
 export class AdminDialogComponent {
   @ViewChild('firstFileUpload')
   public firstFileUpload!: ElementRef<HTMLInputElement>;
+
   @ViewChild('secondFileUpload')
   public secondFileUpload!: ElementRef<HTMLInputElement>;
 
@@ -50,10 +51,18 @@ export class AdminDialogComponent {
   }
 
   getFirstPictureBase64() {
-    console.log(this.firstFileUpload);
-    
-    const file = this.firstFileUpload.nativeElement?.files![0];
+    if (
+      !this.firstFileUpload.nativeElement ||
+      !this.firstFileUpload.nativeElement.files
+    ) {
+      return;
+    }
+    const file = this.firstFileUpload.nativeElement.files[0];
+    if (!file) {
+      return;
+    }
     const reader = new FileReader();
+    console.log('File is', file);
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.firstPictureBase64 = reader.result as string;
@@ -64,7 +73,17 @@ export class AdminDialogComponent {
   }
 
   getSecondPictureBase64() {
-    const file = this.secondFileUpload.nativeElement?.files![0];
+    if (
+      !this.secondFileUpload.nativeElement ||
+      !this.secondFileUpload.nativeElement.files
+    ) {
+      return;
+    }
+
+    const file = this.secondFileUpload.nativeElement.files[0];
+    if (!file) {
+      return;
+    }
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {

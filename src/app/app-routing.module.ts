@@ -4,7 +4,6 @@ import { AuthComponent } from './auth/auth/auth.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NotfoundComponent } from './auth/notfound/notfound.component';
 import { AdminPanelComponent } from './header/admin/admin-panel/admin-panel.component';
-import { DashboardComponent } from './header/dashboard/dashboard.component';
 import { GameBoardComponent } from './header/game/game-board/game-board.component';
 import { HeaderComponent } from './header/header.component';
 import { LeaderboardComponent } from './header/leaderboard/leaderboard/leaderboard.component';

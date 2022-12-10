@@ -1,15 +1,44 @@
-<h2>Add Easy Logic </h2>
-<form>
-    <mat-form-field appearance="fill">
-        <mat-label>Write answer</mat-label>
-        <input formControlName = "answer" matInput >
-      </mat-form-field>
-     <div class="file-upload-wraper">
-        <input formControlName = "firstPicture" type="file"  id="fileUpload"  name="fileUpload"/>
-      </div>
-    <div class="file-upload-wraper">
-        <input formControlName = "secondPicture" type="file"  id="fileUpload"  name="fileUpload"/>
-    </div>
-    <button mat-dialog-close="true" (click)="onAddQuestion()" mat-raised-button color="primary" class="button">Save</button>
-    <button mat-dialog-close="false" mat-raised-button color="accent" class="button">Close</button>
+<h2>Add Easy Logic</h2>
+<form [formGroup]="questionForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Write answer</mat-label>
+    <input formControlName="answer" matInput />
+  </mat-form-field>
+  <div class="file-upload-wraper">
+    <input
+      #firstFileUpload
+      formControlName="firstPicture"
+      type="file"
+      id="fileUpload"
+      name="fileUpload"
+      (input)="getFirstPictureBase64()"
+    />
+  </div>
+  <div class="file-upload-wraper">
+    <input
+      #secondFileUpload
+      formControlName="secondPicture"
+      type="file"
+      id="fileUpload"
+      name="fileUpload"
+      (input)="getSecondPictureBase64()"
+    />
+  </div>
+  <button
+    mat-dialog-close="true"
+    (click)="onAddQuestion()"
+    mat-raised-button
+    color="primary"
+    class="button"
+  >
+    Save
+  </button>
+  <button
+    mat-dialog-close="false"
+    mat-raised-button
+    color="accent"
+    class="button"
+  >
+    Close
+  </button>
 </form>

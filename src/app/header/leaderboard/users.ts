@@ -5,5 +5,5 @@ export interface IUser {
     email: string;
     password: string;
     highScore: number;
-    isAdmin: boolean;
+    admin: boolean;
 }

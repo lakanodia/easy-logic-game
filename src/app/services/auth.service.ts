@@ -51,7 +51,7 @@ export class AuthService {
           throw new Error('Failed to Login');
         }
         let user = users[0];
-        if (user.isAdmin) {
+        if (user.admin) {
           this.setUserRole('admin');
         } else {
           this.setUserRole('user');

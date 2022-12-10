@@ -74,7 +74,7 @@ export class RegistrationComponent implements OnInit {
   submitForm(): void {
     if (this.registrationForm.valid) {
       this.userService
-        .createUser(<IUser>this.registrationForm.value)
+        .createUser(<IUser><unknown>this.registrationForm.value)
         .subscribe((result) => {
           if (this.admin.value) {
             this.authService.setUserRoleAndId('admin', result.id.toString());

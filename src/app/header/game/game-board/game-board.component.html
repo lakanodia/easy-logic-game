@@ -8,7 +8,7 @@
   <div class="game-board-div" *ngIf="!isStartButtonVisible">
     <mat-grid-list cols="2" rowHeight="2:1">
       <mat-grid-tile>{{ ticker }}🕒</mat-grid-tile>
-      <mat-grid-tile>{{ correctAnswerScore }}🕒</mat-grid-tile>
+      <mat-grid-tile> score: {{ userScore }}</mat-grid-tile>
       <mat-grid-tile
         ><img
           mat-card-image
@@ -75,7 +75,7 @@
   >
     Your total score is
     <h1>
-      {{ correctAnswerScore }}
+      {{ userScore }}
     </h1>
   </button>
 </div>

@@ -13,6 +13,7 @@
       </button>
     </div>
 
+    <span *ngIf="loggedInUser">Hey, {{ loggedInUser.name }}</span>
     <button mat-raised-button color="accent" (click)="logout()">
       Sign out
     </button>

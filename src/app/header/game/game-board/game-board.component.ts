@@ -3,6 +3,8 @@ import { interval, Observable, take } from 'rxjs';
 import { IQuestion } from '../../admin/question';
 import { QuestionService } from '../../admin/question.service';
 import { delay, map, merge, skip, Subject, tap } from 'rxjs';
+import { UsersService } from '../../leaderboard/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-game-board',
@@ -13,7 +15,6 @@ export class GameBoardComponent implements OnInit {
   isStartButtonVisible: boolean = true;
   isGameLogicVisible: boolean = true;
   isTimerHide: boolean = true;
-  correctAnswerScore: number = -1;
   isSkipButtonVisible: boolean = true;
   userScore: number;
   ticker!: number;
@@ -23,7 +24,7 @@ export class GameBoardComponent implements OnInit {
   hint: string = '********';
   userAnswer: string = '';
 
-  constructor(private questionService: QuestionService) {
+  constructor(private questionService: QuestionService, private userService: UsersService, private authService: AuthService) {
     this.userScore = 0;
   }
 
@@ -51,9 +52,11 @@ export class GameBoardComponent implements OnInit {
   }
 
   checkAnswer() {
+    console.log('KeyUp');
     if (this.isCorrectAnswer()) {
-      this.nextQuestion();
       this.userScore++;
+      this.nextQuestion();
+      this.userAnswer = '';
     }
   }
 
@@ -71,14 +74,12 @@ export class GameBoardComponent implements OnInit {
   }
 
   nextQuestion() {
-    if (this.gameQuestion && this.gameQuestion.answer != this.userAnswer) {
-      alert('Wrong Answer');
-    } else {
-      this.gameQuestion = this.allQuestions[this.questionIndex];
+    this.gameQuestion = this.allQuestions[this.questionIndex];
+    if (this.gameQuestion) {
       this.hint = this.generateHint(this.gameQuestion.answer);
       this.questionIndex++;
-      this.correctAnswerScore++;
-      this.userAnswer = '';
+    } else {
+      this.onGameOver();
     }
   }
 
@@ -102,11 +103,16 @@ export class GameBoardComponent implements OnInit {
   }
 
   outOfTime() {
-    console.log('Time Over');
-    this.isGameLogicVisible = false;
+    this.onGameOver();
     this.isTimerHide = false;
     setTimeout(() => {
       this.isTimerHide = true;
     }, 2000);
+  }
+
+  onGameOver(): void {
+    this.isGameLogicVisible = false;
+    this.userService.updateScore(this.authService.getUserId(), this.userScore).subscribe((data) =>{console.log(data);
+    });
   }
 }

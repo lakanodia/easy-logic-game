@@ -6,8 +6,17 @@
       "name": "Laka",
       "lastname": "Nodia",
       "admin": true,
-      "highScore": 0,
+      "highScore": 2,
       "id": 1
+    },
+    {
+      "email": "lika.nodia@gmail.com",
+      "password": "123",
+      "name": "Lika",
+      "lastname": "Nodia",
+      "admin": false,
+      "highScore": 0,
+      "id": 2
     }
   ],
   "questions": [

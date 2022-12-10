@@ -12,14 +12,12 @@
         <mat-icon>favorite</mat-icon>
       </button>
     </div>
-
     <span *ngIf="loggedInUser">Hey, {{ loggedInUser.name }}</span>
     <button mat-raised-button color="accent" (click)="logout()">
       Sign out
     </button>
   </mat-toolbar>
 </div>
-
 <div class="tab-container">
   <nav mat-tab-nav-bar class="mat-elevation">
     <a *ngIf="isUserAdmin()" mat-tab-link routerLink="/admin">
